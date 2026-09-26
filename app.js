@@ -51,26 +51,25 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     btnSubmit.disabled = true;
-    btnSubmit.textContent = "Enviando respuesta...";
+    btnSubmit.textContent = "Guardando respuesta...";
 
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    const params = new URLSearchParams(formData).toString();
+    const urlFinal = `${SCRIPT_URL}?${params}`;
 
     try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
+      await fetch(urlFinal, {
+        method: "GET",
+        mode: "no-cors"
       });
 
       mensajeEstado.className = "text-center text-sm font-sans mt-4 text-emerald-700 block";
       mensajeEstado.textContent = "¡Muchas gracias! Tu asistencia ha quedado registrada correctamente.";
       form.reset();
     } catch (error) {
+      console.error(error);
       mensajeEstado.className = "text-center text-sm font-sans mt-4 text-red-600 block";
       mensajeEstado.textContent = "Hubo un error al enviar. Por favor, inténtalo de nuevo.";
-      console.error(error);
     } finally {
       btnSubmit.disabled = false;
       btnSubmit.textContent = "Enviar Confirmación";
