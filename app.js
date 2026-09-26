@@ -1,5 +1,5 @@
 // PEGA AQUÍ TU URL /exec DE GOOGLE APPS SCRIPT
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytui4-3L62zYl-CTRBFpWKGY8UYmFrPoCWcVS5oZylJu8oDoEDON_5iNZKYx6-1yM1Ow/exec"; 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiOC858T9asKF7nkQZk4Muhg58GnoYXlJqEr_8KS05fruB1ydSoVjnUA2-SqWqZQgFvQ/exec"; 
 const FECHA_BODA = new Date("2027-06-19T17:00:00").getTime();
 
 document.addEventListener("DOMContentLoaded", () => {
