@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Gracias por confirmar! — María & Patri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    .font-serif-elegant { font-family: 'Cormorant Garamond', Georgia, serif; }
+  </style>
+</head>
+<body class="bg-[#F9F8F6] text-[#2C2A29] min-h-screen flex items-center justify-center p-6">
+
+  <main class="max-w-md w-full bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-[#EBE7DF] text-center relative overflow-hidden">
+    <!-- Adorno decorativo de cabecera -->
+    <div class="text-[#C5A059] mb-4 text-3xl">❦</div>
+
+    <p class="text-xs uppercase tracking-[0.25em] text-[#C5A059] font-medium mb-3">Respuesta registrada</p>
+    
+    <h1 id="texto-agradecimiento" class="font-serif-elegant text-3xl md:text-4xl font-normal text-[#1A1918] mb-4 leading-tight">
+      ¡Muchas gracias!
+    </h1>
+
+    <div class="w-16 h-[1px] bg-[#C5A059] mx-auto mb-6"></div>
+
+    <p class="text-sm text-stone-600 leading-relaxed mb-8">
+      Hemos recibido tu confirmación correctamente. Nos hace muchísima ilusión compartir este día tan especial contigo y ya estamos contando los días.
+    </p>
+
+    <div class="bg-[#FAF8F5] p-5 rounded-2xl border border-[#EFECE6] mb-8 text-xs text-stone-500 leading-relaxed">
+      <p class="font-medium text-stone-700 mb-1">¿Necesitas modificar algo?</p>
+      Si tienes algún cambio de última hora en tus alergias o asistencia, ponte en contacto directo con los novios.
+    </div>
+
+    <!-- Enlace a Google Calendar por si quieren guardarse la fecha -->
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+de+María+y+Patri&dates=20270619T150000Z/20270620T020000Z&details=¡Nos+casamos!+Te+esperamos+para+celebrarlo.&location=Parroquia+Central,+Alicante" 
+       target="_blank" 
+       class="inline-block w-full py-3.5 px-6 rounded-full bg-[#1A1918] text-[#FAF8F5] text-xs uppercase tracking-widest hover:bg-[#C5A059] transition-colors duration-300">
+      Añadir fecha a mi calendario
+    </a>
+
+    <p class="mt-8 text-[11px] text-stone-400 font-serif-elegant italic tracking-wide">
+      María & Patri — 19.06.2027
+    </p>
+  </main>
+
+  <script>
+    // Recuperamos el nombre del invitado para personalizar la página de gracias
+    const nombreGuardado = localStorage.getItem("boda_nombre_invitado");
+    if (nombreGuardado) {
+      document.getElementById("texto-agradecimiento").textContent = `¡Muchas gracias, ${nombreGuardado}!`;
+    }
+  </script>
+</body>
+</html>
