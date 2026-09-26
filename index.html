@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda de Manuel & Laura</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-serif min-h-screen">
+
+  <!-- Modal de bienvenida para activar la música -->
+  <div id="modal-musica" class="fixed inset-0 bg-stone-900/80 z-50 flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-2xl max-w-sm w-full text-center shadow-2xl">
+      <h2 class="text-2xl font-normal mb-2">Bienvenidos</h2>
+      <p class="text-sm text-stone-600 mb-6 font-sans">La música de fondo forma parte de la experiencia.</p>
+      <div class="flex flex-col gap-3">
+        <button id="btn-con-musica" class="w-full py-3 bg-amber-800 text-white rounded-lg font-sans text-xs uppercase tracking-widest hover:bg-amber-900 transition">Ingresar con música</button>
+        <button id="btn-sin-musica" class="w-full py-2 text-stone-500 font-sans text-xs uppercase tracking-wider hover:underline">Ingresar sin música</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audio-fondo" loop preload="auto">
+    <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-keys-471.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Cabecera -->
+  <header class="py-20 px-4 text-center border-b border-stone-200 bg-white">
+    <p class="text-xs uppercase tracking-widest text-amber-800 mb-3 font-sans">Nuestra Boda</p>
+    <h1 class="text-4xl md:text-5xl font-light mb-4">Manuel & Laura</h1>
+    <h3 id="saludo-personalizado" class="text-lg italic text-stone-600">Nos encantaría que nos acompañes</h3>
+  </header>
+
+  <!-- Cuenta Atrás -->
+  <section class="py-12 px-4 text-center">
+    <p class="text-xs uppercase tracking-widest text-stone-500 mb-4 font-sans">Faltan</p>
+    <div id="contador" class="flex justify-center gap-6 text-2xl font-light">
+      <div><span id="dias" class="font-bold text-3xl">00</span><br><span class="text-xs font-sans uppercase">Días</span></div>
+      <div><span id="horas" class="font-bold text-3xl">00</span><br><span class="text-xs font-sans uppercase">Hs</span></div>
+      <div><span id="minutos" class="font-bold text-3xl">00</span><br><span class="text-xs font-sans uppercase">Min</span></div>
+      <div><span id="segundos" class="font-bold text-3xl">00</span><br><span class="text-xs font-sans uppercase">Seg</span></div>
+    </div>
+  </section>
+
+  <!-- Ceremonia y Celebración -->
+  <section class="max-w-md mx-auto py-8 px-6 grid gap-6 text-center">
+    <div class="p-6 bg-white rounded-xl shadow-sm border border-stone-100">
+      <h4 class="text-lg font-bold mb-1">Ceremonia</h4>
+      <p class="text-sm text-stone-600 mb-3">Sábado 19 de Junio — 17:00 h</p>
+      <p class="text-xs text-stone-500 mb-4 font-sans">Parroquia Central, Alicante</p>
+      <a href="https://maps.google.com" target="_blank" class="inline-block px-4 py-2 border border-stone-300 rounded text-xs uppercase font-sans tracking-wide hover:bg-stone-50">¿Cómo llegar?</a>
+    </div>
+  </section>
+
+  <!-- Formulario de Confirmación (RSVP) -->
+  <section class="max-w-md mx-auto py-10 px-6 mb-20">
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
+      <h3 class="text-2xl font-normal text-center mb-6">Confirmación de Asistencia</h3>
+      
+      <form id="rsvp-form" class="space-y-4 font-sans text-sm">
+        <div>
+          <label class="block text-stone-600 mb-1">Nombre y Apellidos</label>
+          <input type="text" id="input-nombre" name="nombre" required class="w-full border border-stone-200 p-2.5 rounded focus:outline-amber-800">
+        </div>
+
+        <div>
+          <label class="block text-stone-600 mb-1">¿Asistirás?</label>
+          <select name="asiste" required class="w-full border border-stone-200 p-2.5 rounded bg-white">
+            <option value="Sí">¡Sí, allí estaré!</option>
+            <option value="No">Lamentablemente no podré</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-stone-600 mb-1">Número de personas que asistirán</label>
+          <input type="number" id="input-acompanantes" name="acompanantes" min="1" value="1" class="w-full border border-stone-200 p-2.5 rounded">
+        </div>
+
+        <div>
+          <label class="block text-stone-600 mb-1">Alergias o restricciones alimentarias</label>
+          <input type="text" name="alergias" placeholder="Ninguna, celíaco, vegetariano..." class="w-full border border-stone-200 p-2.5 rounded">
+        </div>
+
+        <div>
+          <label class="block text-stone-600 mb-1">¿Qué canción no puede faltar en la fiesta?</label>
+          <input type="text" name="cancion" placeholder="Artista y título" class="w-full border border-stone-200 p-2.5 rounded">
+        </div>
+
+        <button type="submit" id="btn-submit" class="w-full py-3 bg-stone-900 text-white rounded hover:bg-stone-800 transition font-sans uppercase tracking-wider text-xs">Enviar Confirmación</button>
+      </form>
+
+      <p id="mensaje-estado" class="text-center text-sm font-sans mt-4 hidden font-medium"></p>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
